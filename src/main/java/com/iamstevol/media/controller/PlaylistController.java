@@ -1,5 +1,12 @@
 package com.iamstevol.media.controller;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.*;
+
+@RequestMapping("/playlist")
 public class PlaylistController {
 
     @GetMapping("/")
@@ -41,4 +48,24 @@ public class PlaylistController {
         playlist.setName(name);
         return playlist;
     }
+}
+
+@lombok.Data // for generating getter-setter-toString-hashcode-equals methods
+class Playlist {
+
+    private long id = 1;
+    private String name = "guitar";
+    private List<Song> songs = Arrays.asList(new Song());
+    private Date createdOn = new Date();
+
+}
+
+@lombok.Data // for generating getter-setter-toString-hashcode-equals methods
+class Song {
+
+    private long id = 2;
+    private String name = "guitar song";
+    private String coverUrl = "https://i.ytimg.com/vi/iIjSS_MbCGg/hqdefault.jpg";
+    private Date createdOn = new Date();
+
 }

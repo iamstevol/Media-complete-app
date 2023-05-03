@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--<html lang="en">-->
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="shortcut icon" th:href="@{/favicon.png}" type="image/x-icon">
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<table>
+    <tr th:each="playlist: ＄{playlists}">
+        <td th:text="＄{playlist.id}" />
+        <td th:text="＄{playlist.name}" />
+        <td th:text="＄{playlist.createdOn}" />
+        <td>
+            <table>
+                <tr th:each="song, iter: ＄{playlist.songs}">
+                    <td th:text="＄{song.id}" />
+                    <td th:text="＄{song.name}" />
+                    <td th:text="＄{playlist.createdOn}" />
+                    <td th:text="＄{playlist.coverUrl}" />
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 </body>
 </html>
