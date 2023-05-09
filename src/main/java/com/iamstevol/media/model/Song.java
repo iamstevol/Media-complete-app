@@ -10,24 +10,24 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name = "song")
-@NamedNativeQuery(name = "songsByPlaylistId", query = "select id, name, playlist_id, cover_url, created_on from song s where s.playlist_id = ?", resultClass = Song.class)
+@NamedNativeQuery(name = "songsByPlaylistId", query = "select id, name, playlistId, coverUrl, createdOn from song s where s.playlistId = ?", resultClass = Song.class)
 public class Song {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private BigInteger id;
 
-    @Column(name = "playlist_id")
+    @Column(name = "playlistId")
     @JsonProperty("playlist_id")
     private BigInteger playlistId;
 
     private String name;
 
-    @Column(name = "cover_url")
+    @Column(name = "coverUrl")
     @JsonProperty("cover_url")
     private String coverUrl;
 
-    @Column(name = "created_on")
+    @Column(name = "createdOn")
     @JsonProperty("created_on")
     private Date createdOn;
 }
