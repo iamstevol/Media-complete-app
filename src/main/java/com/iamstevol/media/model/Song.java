@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 @Data
 @Table(name = "song")
-@NamedNativeQuery(name = "songsByPlaylistId", query = "select id, name, playlistId, coverUrl, createdOn from song s where s.playlistId = ?", resultClass = Song.class)
+//@NamedNativeQuery(name = "songsByPlaylistId", query = "select id, name, playlistId, coverUrl, createdOn from song s where s.playlistId = ?", resultClass = Song.class)
 public class Song {
 
     @Id
@@ -31,3 +31,4 @@ public class Song {
     @JsonProperty("created_on")
     private Date createdOn;
 }
+

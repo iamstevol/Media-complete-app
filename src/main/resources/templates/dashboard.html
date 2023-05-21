@@ -8,22 +8,25 @@
     <title>Title</title>
 </head>
 <body>
-<table>
-    <tr th:each="playlist: ＄{playlists}">
-        <td th:text="＄{playlist.id}" />
-        <td th:text="＄{playlist.name}" />
-        <td th:text="＄{playlist.createdOn}" />
-        <td>
-            <table>
-                <tr th:each="song, iter: ＄{playlist.songs}">
-                    <td th:text="＄{song.id}" />
-                    <td th:text="＄{song.name}" />
-                    <td th:text="＄{playlist.createdOn}" />
-                    <td th:text="＄{playlist.coverUrl}" />
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
+<div>
+    <table>
+        <tr style="background-color: red" th:each="playlist: ${playlists}">
+            <td th:text="*{playlist.id}" />
+            <td th:text="*{playlist.name}" />
+            <td th:text="*{playlist.createdOn}" />
+            <td>
+                <table>
+                    <tr th:each="song, iter: *{playlist.songs}">
+                        <td th:text="*{song.id}" />
+                        <td th:text="*{song.name}" />
+                        <td th:text="*{playlist.createdOn}" />
+<!--                        <td th:text="*{playlist.coverUrl}" />-->
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
 </body>
 </html>

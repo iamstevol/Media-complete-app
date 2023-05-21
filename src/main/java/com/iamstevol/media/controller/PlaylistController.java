@@ -6,6 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
+@RestController
 @RequestMapping("/playlist")
 public class PlaylistController {
 
@@ -14,27 +15,27 @@ public class PlaylistController {
         model.addAttribute("playlists", Arrays.asList(new Playlist()));
 
         // template `playlists` will be rendered using data from `Model`
-        return "index";
+        return "dashboard";
     }
 
-    @GetMapping("/usingModelAndView")
+    @GetMapping("/fetchPlaylist")
     public ModelAndView fetchAllPlaylist() {
 
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("playlists", new Playlist());
 
         // template `playlists` will be rendered using data from attributes
-        return new ModelAndView("index", attributes);
+        return new ModelAndView("dashboard", attributes);
     }
 
-    @PostMapping("/usingModelAndView")
+    @PostMapping("/createPlaylist")
     public ModelAndView createPlaylist(@RequestBody Playlist playlist) {
 
         Map<String, Object> attributes = new HashMap<>();
         attributes.put("playlists", playlist);
 
         // template `playlists` will be rendered using data from attributes
-        return new ModelAndView("index", attributes);
+        return new ModelAndView("dashboard", attributes);
     }
 
     @GetMapping("/usingResponseBody")
@@ -65,7 +66,7 @@ class Song {
 
     private long id = 2;
     private String name = "guitar song";
-    private String coverUrl = "https://i.ytimg.com/vi/iIjSS_MbCGg/hqdefault.jpg";
+    private String coverUrl = "classpath:static/favicon.png";
     private Date createdOn = new Date();
 
 }
