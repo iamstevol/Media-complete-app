@@ -1,5 +1,6 @@
 package com.iamstevol.media.service.impl;
 
+import com.iamstevol.media.exception.PlaylistNotFoundException;
 import com.iamstevol.media.model.Playlist;
 import com.iamstevol.media.model.Song;
 import com.iamstevol.media.repository.PlaylistRepository;
@@ -27,5 +28,9 @@ public class PlaylistServiceImpl {
                 .setParameter(1, playlistId)
                 .getResultList();
         System.out.println(resultList);
+    }
+
+    public Playlist getPlaylist(BigInteger id) {
+        return playlistRepository.findById(id).orElseThrow(() -> new PlaylistNotFoundException(id));
     }
 }
